@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"       
+	xmlns:p="http://www.springframework.org/schema/p"  
+	xmlns:context="http://www.springframework.org/schema/context"   
+	xmlns:tx="http://www.springframework.org/schema/tx"  
+	xmlns:aop="http://www.springframework.org/schema/aop"  
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+	http://www.springframework.org/schema/beans/spring-beans.xsd    
+	http://www.springframework.org/schema/aop    
+	http://www.springframework.org/schema/aop/spring-aop.xsd    
+	http://www.springframework.org/schema/tx    
+	http://www.springframework.org/schema/tx/spring-tx.xsd    
+	http://www.springframework.org/schema/context    
+	http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="loginAction" class="com.itheima.Action.loginAction" scope="prototype"></bean>
+	<bean id="homeAction" class="com.itheima.Action.HomeAction" scope="prototype"></bean>
+	<bean id="deptAction" class="com.itheima.Action.sysadmin.DeptAction" scope="prototype">
+		<property name="deptService" ref="deptService" />
+	</bean>
+	<bean id="userAction" class="com.itheima.Action.sysadmin.UserAction" scope="prototype">
+		<property name="Userservice" ref="Userservice" />
+		<property name="deptService" ref="deptService" />
+		<property name="Roleservice" ref="Roleservice" />
+	</bean>
+	<bean id="roleAction" class="com.itheima.Action.sysadmin.RoleAction" scope="prototype">
+		<property name="Roleservice" ref="Roleservice" />
+		<property name="Modeleservice" ref="Modeleservice" />
+	</bean>
+	<bean id="moduleAction" class="com.itheima.Action.sysadmin.ModuleAction" scope="prototype">
+		<property name="Modeleservice" ref="Modeleservice" />
+	</bean>
+
+
+	<bean id="contractAction" class="com.itheima.Action.cargo.ContractAction" scope="prototype">
+		<property name="cargoservice" ref="cargoservice" />
+	</bean>
+	<bean id="contractProductAction" class="com.itheima.Action.cargo.ContractProductAction" scope="prototype">
+		<property name="contractProductService" ref="contractProductService" />
+		<property name="factoryService" ref="factoryService" />
+	</bean>
+	
+	
+	
+	<bean id="outProductAction" class="com.itheima.Action.cargo.OutProductAction" scope="prototype">
+		<property name="contractProductService" ref="contractProductService" />
+	</bean>
+	
+	
+	<bean id="extCproductAction" class="com.itheima.Action.cargo.ExtCproductAction" scope="prototype">
+			<property name="extCproductService" ref="extCproductService" />
+			<property name="factoryService" ref="factoryService" />
+	</bean>
+	
+	
+	<bean id="exportAction" class="com.itheima.Action.cargo.ExportAction" scope="prototype">
+			<property name="exportservice" ref="exportservice" />
+			<property name="cargoservice" ref="cargoservice" />
+			<property name="exportProductservice" ref="exportProductservice" />
+			 <property name="epService" ref="exportwsClient"></property>  <!-- 这里的exportwsClient是cxf配置中的id -->
+	</bean>
+
+	<bean id="statChartAction" class="com.itheima.stat.StatChartAction" scope="prototype">
+			<property name="sqlDao" ref="sqlDao" />
+	</bean>
+	
+	
+	
+	
+	<bean id="packingListAction" class="com.itheima.Action.cargo.PackingListAction" scope="prototype">
+			<property name="packingListService" ref="packingListService" />
+	</bean>
+
+
+
+
+
+
+
+
+</beans>
